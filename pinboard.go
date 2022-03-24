@@ -106,7 +106,7 @@ func get(endpoint string, options interface{}) (body []byte, err error) {
 
 	// Call APImethod with fully constructed URL.
 	req, err := http.NewRequest("GET", u.String(), nil)
-	req.Header.Add("max-age", "3600")
+	req.Header.Add("Cache-Control", "max-age=3600")
 	res, err := httpClient.Do(req)
 	if err != nil {
 		return nil, err
