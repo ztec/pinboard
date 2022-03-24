@@ -1,3 +1,3 @@
-module github.com/imwally/pinboard
+module github.com/ztec/pinboard
 
 go 1.16

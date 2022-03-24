@@ -59,6 +59,8 @@ var (
 	}
 
 	pinboardToken = ""
+
+	httpClient *http.Client = &http.Client{}
 )
 
 // get checks if endpoint is a valid Pinboard API endpoint and then
@@ -102,8 +104,10 @@ func get(endpoint string, options interface{}) (body []byte, err error) {
 	q.Add("format", "json")
 	u.RawQuery = q.Encode()
 
+	println("I was here")
+
 	// Call APImethod with fully constructed URL.
-	res, err := http.Get(u.String())
+	res, err := httpClient.Get(u.String())
 	if err != nil {
 		return nil, err
 	}
