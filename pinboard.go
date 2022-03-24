@@ -105,7 +105,9 @@ func get(endpoint string, options interface{}) (body []byte, err error) {
 	u.RawQuery = q.Encode()
 
 	// Call APImethod with fully constructed URL.
-	res, err := httpClient.Get(u.String())
+	req, err := http.NewRequest("GET", u.String(), nil)
+	req.Header.Add("max-age", "3600")
+	res, err := httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
